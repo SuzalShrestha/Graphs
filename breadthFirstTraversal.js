@@ -13,9 +13,10 @@ function printBreadthFirst(start) {
   let queue = [current];
   let visited = new Set();
   visited.add(start);
+  let result=[]
   while (queue.length > 0) {
     let node = queue.shift();
-    console.log(node);
+    result.push(node);
     for (let item of adjList[node]) {
       if (!visited.has(item)) {
         visited.add(item);
@@ -23,6 +24,7 @@ function printBreadthFirst(start) {
       }
     }
   }
+  console.log(result);
 }
 
 console.log("First Test:");
