@@ -8,7 +8,41 @@ const adjList = {
 }
 
 function aShortestPath(start, end) {
-  // your code here
+//   // your code here
+//   Create a queue. Create a separate array containing the starting node. 
+//Enqueue this array. The enqueued array is the current path.
+// Create a set to store visited nodes
+// While the queue is not empty, repeat steps 4-6
+// Dequeue the first path, and save it in a variable
+// Save the last node in the path in a variable (DO NOT pop it)
+// IS THIS NODE THE THING? If so, stop and return a result. Else, continue.
+// For each unvisited neighbor of the last node:
+// Add it to the visited nodes set
+// Copy the saved path, and add the neighbor to the end. Enqueue this new path
+// If the queue has become empty without finding the thing, then the thing
+// has not been found.
+// Return false, an error, or a message as appropriate for the problem 
+//you are solving.
+let queue=[];
+let path=[start];
+queue.push(path);
+
+let visited=new Set();
+visited.add(start);
+while(queue.length>0){
+    let currentPath=queue.shift();
+    let lastNode=currentPath[currentPath.length-1];
+    if(lastNode===end) return currentPath;
+    for(let neighbor of adjList[lastNode]){
+        if(!visited.has(neighbor)){
+            visited.add(neighbor);
+            let newPath=currentPath.slice();
+            newPath.push(neighbor);
+            queue.push(newPath);
+        }
+    }
+}
+return false;
 }
 
 console.log("First Test:");
