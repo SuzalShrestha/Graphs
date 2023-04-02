@@ -23,10 +23,7 @@ function aShortestPath(start, end) {
   // has not been found.
   // Return false, an error, or a message as appropriate for the problem
   //you are solving.
-  let queue = [];
-  let path = [start];
-  queue.push(path);
-
+  let queue = [[start]];
   let visited = new Set();
   visited.add(start);
   while (queue.length > 0) {
